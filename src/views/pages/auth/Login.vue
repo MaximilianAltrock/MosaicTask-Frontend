@@ -23,7 +23,7 @@ const handleLogin = async () => {
         toast.add({
             severity: 'error',
             summary: 'Login Failed',
-            detail: error?.message || 'Invalid username or password',
+            detail: 'Invalid username or password',
             life: 3000
         });
     } finally {

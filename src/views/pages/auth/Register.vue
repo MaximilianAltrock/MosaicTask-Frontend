@@ -16,12 +16,11 @@ const loading = ref(false);
 
 const handleRegister = async () => {
     if (password.value !== confirmPassword.value) {
-        // Zeige eine Fehlermeldung für unübereinstimmende Passwörter
         toast.add({
-            severity: 'warn', // Warnung, da es ein Client-seitiger Fehler ist
+            severity: 'warn',
             summary: 'Password Mismatch', // Zusammenfassung
-            detail: 'Passwords do not match. Please try again.', // Details zur Fehlermeldung
-            life: 3000 // Dauer des Toasts
+            detail: 'Passwords do not match. Please try again.',
+            life: 3000
         });
         return;
     }
@@ -32,12 +31,11 @@ const handleRegister = async () => {
         router.push('/dashboard');
     } catch (error) {
         console.error('Registration failed:', error);
-        // Zeige eine allgemeine Fehlermeldung bei Fehlern während der Registrierung
         toast.add({
-            severity: 'error', // Fehler, da es ein Server-seitiger Fehler ist
-            summary: 'Registration Failed', // Zusammenfassung
-            detail: error?.message || 'An error occurred during registration. Please try again later.', // Details zur Fehlermeldung
-            life: 3000 // Dauer des Toasts
+            severity: 'error',
+            summary: 'Registration Failed',
+            detail: 'Username already exists',
+            life: 3000
         });
     } finally {
         loading.value = false;
