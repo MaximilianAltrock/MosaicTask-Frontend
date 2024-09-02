@@ -93,6 +93,7 @@ const handleRegister = async () => {
             </div>
         </div>
     </form>
+    <Toast />
 </template>
 
 <style scoped>

@@ -77,6 +77,7 @@ const handleLogin = async () => {
             </div>
         </div>
     </form>
+    <Toast />
 </template>
 
 <style scoped>
