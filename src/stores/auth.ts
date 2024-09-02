@@ -32,7 +32,6 @@ export const useAuthStore = defineStore('auth', {
         async login(credentials: LoginCredentials) {
             try {
                 const response = await api.post<Tokens & { user: User }>('/login/', credentials);
-                console.log('Received tokens:', response.data);
                 if (response.data.refresh) {
                     this.setTokens(response.data);
                     this.user = response.data.user;
@@ -49,7 +48,6 @@ export const useAuthStore = defineStore('auth', {
         async register(userData: RegisterData) {
             try {
                 const response = await api.post<User>('/register/', userData);
-                // Nach erfolgreicher Registrierung, führen wir den Login durch
                 await this.login(userData);
                 return response.data;
             } catch (error) {
@@ -59,7 +57,6 @@ export const useAuthStore = defineStore('auth', {
         },
 
         setTokens(tokens: Tokens) {
-            console.log('Setting tokens:', tokens);
             this.accessToken = tokens.access;
             this.refreshToken = tokens.refresh;
             localStorage.setItem('accessToken', tokens.access);
