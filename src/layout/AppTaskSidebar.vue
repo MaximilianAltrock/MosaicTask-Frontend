@@ -249,6 +249,8 @@ watch(
     () => boardStore.selectedTask,
     (newTask, oldTask) => {
         if (newTask?.id !== oldTask?.id) {
+            taskMoodHistory.value = '';
+            showEntries.value = false;
             fetchMoodStatistics();
         }
     },

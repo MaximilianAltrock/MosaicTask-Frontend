@@ -90,10 +90,12 @@ const saveMood = (mood: { valence: number; arousal: number }) => {
 
 const updateVisibility = (visibility: string, sharedWith: number[]) => {
     emit('update:visibility', visibility, sharedWith);
+    menu.value.hide();
 };
 
 const updateTask = (taskId: number | null) => {
     emit('update:task', taskId);
+    taskMenu.value.hide();
 };
 
 const getSelectedTaskId = (task: number | { id: number } | null | undefined): number | null => {
