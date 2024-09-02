@@ -2,7 +2,9 @@
 import { ref } from 'vue';
 
 import { useAuthStore } from '@/stores/auth';
+import { useToast } from 'primevue/usetoast';
 import { useRoute, useRouter } from 'vue-router';
+const toast = useToast();
 const router = useRouter();
 const route = useRoute();
 const authStore = useAuthStore();
@@ -14,7 +16,13 @@ const loading = ref(false);
 
 const handleRegister = async () => {
     if (password.value !== confirmPassword.value) {
-        // Handle password mismatch error
+        // Zeige eine Fehlermeldung für unübereinstimmende Passwörter
+        toast.add({
+            severity: 'warn', // Warnung, da es ein Client-seitiger Fehler ist
+            summary: 'Password Mismatch', // Zusammenfassung
+            detail: 'Passwords do not match. Please try again.', // Details zur Fehlermeldung
+            life: 3000 // Dauer des Toasts
+        });
         return;
     }
 
@@ -24,7 +32,13 @@ const handleRegister = async () => {
         router.push('/dashboard');
     } catch (error) {
         console.error('Registration failed:', error);
-        // Handle registration error (e.g., show error message)
+        // Zeige eine allgemeine Fehlermeldung bei Fehlern während der Registrierung
+        toast.add({
+            severity: 'error', // Fehler, da es ein Server-seitiger Fehler ist
+            summary: 'Registration Failed', // Zusammenfassung
+            detail: error?.message || 'An error occurred during registration. Please try again later.', // Details zur Fehlermeldung
+            life: 3000 // Dauer des Toasts
+        });
     } finally {
         loading.value = false;
     }

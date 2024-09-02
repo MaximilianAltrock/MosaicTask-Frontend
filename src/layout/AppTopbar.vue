@@ -9,10 +9,10 @@ const authStore = useAuthStore();
 const router = useRouter();
 const menu = ref();
 const menuItems = ref([
-    {
-        label: 'Settings',
-        icon: 'pi pi-fw pi-cog'
-    },
+    // {
+    //     label: 'Settings',
+    //     icon: 'pi pi-fw pi-cog'
+    // },
     {
         label: 'Sign out',
         icon: 'pi pi-fw pi-sign-out',

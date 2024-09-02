@@ -2,10 +2,12 @@
 import { ref } from 'vue';
 
 import { useAuthStore } from '@/stores/auth';
+import { useToast } from 'primevue/usetoast';
 import { useRoute, useRouter } from 'vue-router';
 const router = useRouter();
 const route = useRoute();
 const authStore = useAuthStore();
+const toast = useToast();
 
 const username = ref('');
 const password = ref('');
@@ -18,6 +20,12 @@ const handleLogin = async () => {
         router.push(redirectPath);
     } catch (error) {
         console.error('Login failed:', error);
+        toast.add({
+            severity: 'error',
+            summary: 'Login Failed',
+            detail: error?.message || 'Invalid username or password',
+            life: 3000
+        });
     } finally {
         loading.value = false;
     }
