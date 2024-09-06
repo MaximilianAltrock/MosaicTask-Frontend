@@ -33,7 +33,7 @@ watch(dates, () => {
 
 function getCircumplexGradient(ctx, chartArea) {
     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-    // Farbübergänge richtig definieren (Werte müssen zwischen 0 und 1 liegen)
+
     gradient.addColorStop(0, '#FF0000'); // Red (negative Stimmung)
     gradient.addColorStop(0.5, '#FFFF00'); // Yellow (neutrale Stimmung)
     gradient.addColorStop(1, '#00FF00'); // Green (positive Stimmung)
@@ -44,7 +44,6 @@ function getCircumplexGradient(ctx, chartArea) {
 function getCircumplexGradientForMinMax(ctx, chartArea) {
     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
 
-    // Verwendung von halbtransparenten Farben
     gradient.addColorStop(0, 'rgba(255, 0, 0, 0.3)'); // Semi-transparent Red
     gradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.3)'); // Semi-transparent Yellow
     gradient.addColorStop(1, 'rgba(0, 255, 0, 0.3)'); // Semi-transparent Green
@@ -73,11 +72,12 @@ function setChartData(statistics) {
                     }
                     return getCircumplexGradientForMinMax(ctx, chartArea);
                 },
-                backgroundColor: 'rgba(229, 115, 115, 0.1)',
+                backgroundColor: 'rgba(129, 199, 132, 0.1)',
                 fill: '+1',
                 tension: 0.4,
                 borderWidth: 2,
-                pointBackgroundColor: '#FF0000'
+
+                pointBackgroundColor: '#00FF00'
             },
 
             {
@@ -94,7 +94,8 @@ function setChartData(statistics) {
                 backgroundColor: documentStyle.getPropertyValue('--p-surface-400'),
                 fill: false,
                 tension: 0.4,
-                borderWidth: 2
+                borderWidth: 2,
+                pointBackgroundColor: '#FFFF00'
             },
 
             {
@@ -108,11 +109,11 @@ function setChartData(statistics) {
                     }
                     return getCircumplexGradientForMinMax(ctx, chartArea);
                 },
-                backgroundColor: 'rgba(129, 199, 132, 0.1)',
+                backgroundColor: 'rgba(229, 115, 115, 0.1)',
                 fill: '-1',
                 tension: 0.4,
                 borderWidth: 2,
-                pointBackgroundColor: '#00FF00'
+                pointBackgroundColor: '#FF0000'
             }
         ]
     };
@@ -162,7 +163,7 @@ function setChartOptions() {
             legend: {
                 display: true,
                 labels: {
-                    fontColor: textSurface, // Verwende die CSS-Variable oder eine Standardfarbe
+                    fontColor: textSurface,
                     color: textSurface,
                     generateLabels: function (chart) {
                         const labels = chart.data.datasets.map((dataset, i) => {

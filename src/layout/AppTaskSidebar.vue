@@ -81,10 +81,11 @@ function setChartData(statistics) {
                     }
                     return getCircumplexGradientForMinMax(ctx, chartArea);
                 },
-                backgroundColor: 'rgba(229, 115, 115, 0.1)',
+                backgroundColor: 'rgba(129, 199, 132, 0.1)',
                 fill: '+1',
                 tension: 0.4,
-                borderWidth: 2
+                borderWidth: 2,
+                pointBackgroundColor: '#00FF00'
             },
 
             {
@@ -101,7 +102,8 @@ function setChartData(statistics) {
                 backgroundColor: documentStyle.getPropertyValue('--p-surface-400'),
                 fill: false,
                 tension: 0.4,
-                borderWidth: 2
+                borderWidth: 2,
+                pointBackgroundColor: '#FFFF00'
             },
 
             {
@@ -115,10 +117,11 @@ function setChartData(statistics) {
                     }
                     return getCircumplexGradientForMinMax(ctx, chartArea);
                 },
-                backgroundColor: 'rgba(129, 199, 132, 0.1)',
+                backgroundColor: 'rgba(229, 115, 115, 0.1)',
                 fill: '-1',
                 tension: 0.4,
-                borderWidth: 2
+                borderWidth: 2,
+                pointBackgroundColor: '#FF0000'
             }
         ]
     };
