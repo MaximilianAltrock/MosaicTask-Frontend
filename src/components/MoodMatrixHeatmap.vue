@@ -145,9 +145,9 @@ function createHeatmap() {
         });
 
     const legendData = [
-        { color: 'red', text: 'High Mood Intensity' },
-        { color: 'yellow', text: 'Moderate Mood Intensity' },
-        { color: 'green', text: 'Low Mood Intensity' }
+        { color: 'red', text: 'Negative' },
+        { color: 'yellow', text: 'Neutral' },
+        { color: 'green', text: 'Positive' }
     ];
 
     const legend = svg
@@ -173,7 +173,7 @@ function createHeatmap() {
         .append('text')
         .attr('x', 30)
         .attr('y', (d, i) => i * 35 + 18)
-        .style('font-size', '9px')
+        .style('font-size', '10px')
         .text((d) => d.text);
 
     function updateTextColor() {
