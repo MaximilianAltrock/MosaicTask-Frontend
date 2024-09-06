@@ -33,9 +33,10 @@ watch(dates, () => {
 
 function getCircumplexGradient(ctx, chartArea) {
     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-    gradient.addColorStop(0, '#00FF00'); // Green
-    gradient.addColorStop(0.5, '#FFFF00'); // Yellow
-    gradient.addColorStop(1, '#FF0000'); // Red
+    // Farbübergänge richtig definieren (Werte müssen zwischen 0 und 1 liegen)
+    gradient.addColorStop(0, '#FF0000'); // Red (negative Stimmung)
+    gradient.addColorStop(0.5, '#FFFF00'); // Yellow (neutrale Stimmung)
+    gradient.addColorStop(1, '#00FF00'); // Green (positive Stimmung)
 
     return gradient;
 }
@@ -44,9 +45,9 @@ function getCircumplexGradientForMinMax(ctx, chartArea) {
     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
 
     // Verwendung von halbtransparenten Farben
-    gradient.addColorStop(0, 'rgba(0, 255, 0, 0.3)'); // Semi-transparent Green
+    gradient.addColorStop(0, 'rgba(255, 0, 0, 0.3)'); // Semi-transparent Red
     gradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.3)'); // Semi-transparent Yellow
-    gradient.addColorStop(1, 'rgba(255, 0, 0, 0.3)'); // Semi-transparent Red
+    gradient.addColorStop(1, 'rgba(0, 255, 0, 0.3)'); // Semi-transparent Green
 
     return gradient;
 }
@@ -62,7 +63,7 @@ function setChartData(statistics) {
         labels: labels,
         datasets: [
             {
-                label: 'Negative Mood',
+                label: 'Positive Mood',
                 data: maxData,
                 borderColor: (context) => {
                     const chart = context.chart;
@@ -97,7 +98,7 @@ function setChartData(statistics) {
             },
 
             {
-                label: 'Positive Mood',
+                label: 'Negative Mood',
                 data: minData,
                 borderColor: (context) => {
                     const chart = context.chart;

@@ -26,7 +26,7 @@ function createHeatmap() {
     const data = journalStore.getHeatMapData;
 
     if (!heatmapContainer.value) {
-        console.error('Heatmap container is not available');
+        // console.error('Heatmap container is not available');
         return;
     }
 
@@ -75,8 +75,7 @@ function createHeatmap() {
 
     svg.append('g').call(d3.axisLeft(y)).selectAll('text').style('font-size', '12px');
 
-    const colorScale = d3.scaleLinear<number, string>().domain([0, 0.7, 1.25, 1.41]).range(['green', 'yellow', 'orange', 'red']);
-
+    const colorScale = d3.scaleLinear<number, string>().domain([-1, 0, 1]).range(['red', 'yellow', 'green']);
     const tooltip = d3
         .select(heatmapContainer.value)
         .append('div')

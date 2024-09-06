@@ -18,9 +18,9 @@ onMounted(async () => {
 
 function getCircumplexGradient(ctx, chartArea) {
     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-    gradient.addColorStop(0, '#00FF00'); // Green
-    gradient.addColorStop(0.5, '#FFFF00'); // Yellow
-    gradient.addColorStop(1, '#FF0000'); // Red
+    gradient.addColorStop(0, '#FF0000'); // Red (negative Stimmung)
+    gradient.addColorStop(0.5, '#FFFF00'); // Yellow (neutrale Stimmung)
+    gradient.addColorStop(1, '#00FF00'); // Green (positive Stimmung)
 
     return gradient;
 }
