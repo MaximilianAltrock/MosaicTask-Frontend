@@ -29,34 +29,7 @@ const saveMood = () => {
         <div class="relative w-full max-w-sm aspect-square" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)">
             <!-- Circumplex Mood Model with Radial and Conic Gradient -->
             <div
-                class="absolute inset-0 overflow-hidden rounded-lg cursor-pointer"
-                :style="{
-                    background: `
-          radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 50%), conic-gradient(
-            from 290deg,
-            #D44A6B,
-            #ff4500,
-            #f94128,
-            #ED6C63,
-            #F48A57,
-            #F4B74D,
-            #F4D245,
-            #F1E441,
-            #84eb46,
-            #73c93e,
-            #15A669,
-            #0C9187,
-            #057A9B,
-            #0467A2,
-            #1255A4,
-            #3A3CA2,
-            #751E86,
-            #9C2E76,
-            #AF3373,
-            #D44A6B
-            )
-            `
-                }"
+                class="absolute inset-0 overflow-hidden rounded-lg cursor-pointer bg-gradient-to-br from-red-500 via-yellow-500 to-green-500"
                 @click="(e) => updateMood(((e.clientX - e.target.getBoundingClientRect().left) / e.target.offsetWidth) * 2 - 1, 1 - ((e.clientY - e.target.getBoundingClientRect().top) / e.target.offsetHeight) * 2)"
                 tabindex="0"
                 role="slider"

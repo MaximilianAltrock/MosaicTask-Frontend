@@ -43,31 +43,26 @@ function calculateIconColor(valence, arousal) {
     }
 
     const x = (valence + 1) / 2;
-    const y = (arousal + 1) / 2;
-
-    const topLeft = { r: 255, g: 0, b: 0 }; // Pure Red (Unpleasant, High Energy)
-    const topRight = { r: 255, g: 255, b: 0 }; // Yellow (Pleasant, High Energy)
-    const bottomLeft = { r: 0, g: 0, b: 255 }; // Blue (Unpleasant, Low Energy)
-    const bottomRight = { r: 0, g: 255, b: 0 }; // Green (Pleasant, Low Energy)
-
+    const y = 1 - (arousal + 1) / 2;
+    const topLeft = { r: 255, g: 0, b: 0 };
+    const topRight = { r: 255, g: 255, b: 0 };
+    const bottomLeft = { r: 255, g: 165, b: 0 };
+    const bottomRight = { r: 0, g: 255, b: 0 };
     const topColor = {
         r: topLeft.r * (1 - x) + topRight.r * x,
         g: topLeft.g * (1 - x) + topRight.g * x,
         b: topLeft.b * (1 - x) + topRight.b * x
     };
-
     const bottomColor = {
         r: bottomLeft.r * (1 - x) + bottomRight.r * x,
         g: bottomLeft.g * (1 - x) + bottomRight.g * x,
         b: bottomLeft.b * (1 - x) + bottomRight.b * x
     };
-
     const finalColor = {
-        r: Math.round(topColor.r * y + bottomColor.r * (1 - y)),
-        g: Math.round(topColor.g * y + bottomColor.g * (1 - y)),
-        b: Math.round(topColor.b * y + bottomColor.b * (1 - y))
+        r: Math.round(topColor.r * (1 - y) + bottomColor.r * y),
+        g: Math.round(topColor.g * (1 - y) + bottomColor.g * y),
+        b: Math.round(topColor.b * (1 - y) + bottomColor.b * y)
     };
-
     return `rgb(${finalColor.r}, ${finalColor.g}, ${finalColor.b})`;
 }
 
